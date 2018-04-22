@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 range_x=100
 range_y=10
 
-def load_dataset():
+def load_dataset_center():
 
     csv_path = 'driving_log_RIGHT.csv'
 
