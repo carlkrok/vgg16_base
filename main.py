@@ -14,7 +14,7 @@ def main():
 
     print("Loading model...")
 
-    #model = load_model("vgg16_test.h5")
+    model = load_model("vgg16_test.h5")
 
     print("Loading dataset left...")
 
