@@ -1,6 +1,5 @@
 import numpy as np
 import math
-import loadModel
 from matplotlib import pyplot as plt
 from skimage import transform
 from keras.preprocessing.image import img_to_array
