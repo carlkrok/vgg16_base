@@ -27,7 +27,7 @@ def load_dataset():
 
     for i_elem in range(data_size):
 
-        image = cv2.imread("/home/student/Desktop/Syndata/spurv_steering_angle/"+data['image'][i_elem].strip())
+        image = cv2.imread("/home/student/Desktop/Syndata/spurv_steering_angle/"+data_files['image'][i_elem].strip())
 
         if image is None:
             break
