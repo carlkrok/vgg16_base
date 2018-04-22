@@ -20,7 +20,7 @@ def main():
 
     print("Training the model...")
 
-    history = model.fit(np_images, np_steering, epochs=1, batch_size=100)
+    history = model.fit(np_images, np_steering, epochs=5, batch_size=10)
 
     print("Saving the model...")
 
