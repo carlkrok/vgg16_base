@@ -22,7 +22,7 @@ def load_dataset():
 
     data_size = len(data_files)
 
-    np_images = np.zeros((data_size, new_size_row, new_size_col, 3))
+    np_images = np.zeros((data_size, 64, 64, 3))
     np_steering = np.zeros(data_size)
 
     for i_elem in range(data_size):
@@ -35,7 +35,7 @@ def load_dataset():
         shape = image.shape
 
         image = image[math.floor(shape[0]/4):, 0:shape[1]] #removed shape[0]-25 in row
-        image = cv2.resize(image,(new_size_col,new_size_row), interpolation=cv2.INTER_AREA)
+        image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
         image = image/255.-.5
         image = np.array(image)
 
