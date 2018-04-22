@@ -8,9 +8,9 @@ from keras.models import load_model
 
 def main():
 
-    #print("Creating model...")
+    print("Creating model...")
 
-    #vgg16.vgg16()
+    vgg16.vgg16()
 
     print("Loading model...")
 
