@@ -26,9 +26,9 @@ def main():
 
     save_load_model.save_model(model, "trained_model")
 
-    print("Creating heatmap...")
+    #print("Creating heatmap...")
 
-    heat_map.heat_map()
+    #heat_map.heat_map()
 
     print("Finished!")
 
