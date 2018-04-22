@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 def load_dataset():
 
-    csv_path = 'driving_log_left.csv'
+    csv_path = 'driving_log_LEFT.csv'
 
     data_files = pd.read_csv(csv_path, index_col = False)
     data_files['direction'] = pd.Series('s', index=data_files.index)
