@@ -8,13 +8,14 @@ from keras.models import load_model
 
 def main():
 
-    print("Creating model...")
+    #print("Creating model...")
 
-    vgg16.vgg16()
+    #vgg16.vgg16()
 
     print("Loading model...")
 
-    model = load_model("vgg16_test.h5")
+    #model = load_model("vgg16_test.h5")
+    model = load_model("trained_model_simulator.h5")
 
     print("Loading dataset left...")
 
@@ -22,7 +23,7 @@ def main():
 
     print("Training the model...")
 
-    history = model.fit(np_images, np_steering, epochs=5, batch_size=3)
+    history = model.fit(np_images, np_steering, epochs=5, batch_size=5)
 
     print("Loading dataset right...")
 
@@ -30,7 +31,7 @@ def main():
 
     print("Training the model...")
 
-    history = model.fit(np_images, np_steering, epochs=5, batch_size=3)
+    history = model.fit(np_images, np_steering, epochs=5, batch_size=5)
 
     print("Saving the model...")
 

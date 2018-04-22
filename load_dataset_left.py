@@ -25,6 +25,9 @@ def load_dataset():
 
         if image is not None:
 
+            if i_elem%500 == 0:
+                print("Image: ", data_files['center'][i_elem].strip(), " -- Steer: ", data_files['steer'][i_elem])
+
             shape = image.shape
 
             image = image[math.floor(shape[0]/4):shape[0]-25, 0:shape[1]]
