@@ -12,8 +12,7 @@ def load_dataset():
     csv_path = 'driving_log_RIGHT.csv'
 
     data_files = pd.read_csv(csv_path, index_col = False)
-    data_files['direction'] = pd.Series('s', index=data_files.index)
-    data_files.columns = ['center','left','right','steering','throttle','break']
+    data_files.columns = ['center','left','right','steering','throttle','break', 'speed']
 
     data_size = len(data_files)
 
