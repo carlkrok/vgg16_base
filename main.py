@@ -23,7 +23,7 @@ def main():
 
     print("Training the model...")
 
-    history = model.fit(np_images, np_steering, epochs=5, batch_size=10)
+    history = model.fit(np_images, np_steering, epochs=5, batch_size=7)
 
     print("Loading dataset right...")
 
@@ -31,7 +31,7 @@ def main():
 
     print("Training the model...")
 
-    history = model.fit(np_images, np_steering, epochs=5, batch_size=10)
+    history = model.fit(np_images, np_steering, epochs=5, batch_size=7)
 
     print("Saving the model...")
 
