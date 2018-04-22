@@ -2,7 +2,6 @@ import numpy as np
 import math
 import loadModel
 from matplotlib import pyplot as plt
-%matplotlib inline
 from skimage import transform
 from keras.preprocessing.image import img_to_array
 from keras.layers import Activation
