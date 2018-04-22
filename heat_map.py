@@ -3,6 +3,7 @@ import math
 from matplotlib import pyplot as plt
 from skimage import transform
 from keras.preprocessing.image import img_to_array
+from keras.models import load_model
 from keras.layers import Activation
 from vis.utils import utils
 
