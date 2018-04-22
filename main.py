@@ -2,6 +2,7 @@ import vgg16
 import load_dataset
 import save_load_model
 import heat_map
+from keras.models import load_model
 
 def main():
 
@@ -11,7 +12,7 @@ def main():
 
     print("Loading model...")
 
-    model = save_load_model.load_model("vgg16_test")
+    model = load_model("vgg16_test.h5")
 
     print("Loading dataset...")
 

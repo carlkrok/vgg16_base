@@ -7,7 +7,3 @@ def save_model(model, model_name):
     print("Saved model to disk")
 
     return;
-
-def load_model(model_name):
-
-    return load_model(model_name+".h5");
