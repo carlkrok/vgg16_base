@@ -13,7 +13,7 @@ def heat_map():
     FRAME_W = 64
 
     model = load_model('trained_model.h5')
-    img = utils.load_img('IMG/image3782.jpg')
+    img = utils.load_img('IMG/image684.jpg')
 
     shape = img.shape
     img = img[math.floor(shape[0]/4):, 0:shape[1]] #removed shape[0]-25 from row
