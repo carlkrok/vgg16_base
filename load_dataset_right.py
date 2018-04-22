@@ -25,16 +25,16 @@ def load_dataset():
 
         if image is not None:
 
-          shape = image.shape
+            shape = image.shape
 
-          image = image[math.floor(shape[0]/4):shape[0]-25, 0:shape[1]]
-          image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
-          image = image/255.-.5
-          image = np.array(image)
+            image = image[math.floor(shape[0]/4):shape[0]-25, 0:shape[1]]
+            image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
+            image = image/255.-.5
+            image = np.array(image)
 
-          steer = np.array([data_files['steer'][i_elem]])
+            steer = data_files['steer'][i_elem]
 
-          np_images[i_elem] = image
-          np_steering[i_elem] = steer
+            np_images[i_elem] = image
+            np_steering[i_elem] = steer
 
     return np_images, np_steering;
