@@ -17,17 +17,49 @@ def main():
     #model = load_model("vgg16_test.h5")
     model = load_model("trained_model_simulator.h5")
 
-    print("Loading dataset left...")
+    print("Loading dataset left - center...")
 
-    np_images, np_steering = load_dataset_left.load_dataset()
+    np_images, np_steering = load_dataset_left.load_dataset_center()
 
     print("Training the model...")
 
     history = model.fit(np_images, np_steering, epochs=5, batch_size=5)
 
-    print("Loading dataset right...")
+    print("Loading dataset left - left...")
 
-    np_images, np_steering = load_dataset_right.load_dataset()
+    np_images, np_steering = load_dataset_left.load_dataset_left()
+
+    print("Training the model...")
+
+    history = model.fit(np_images, np_steering, epochs=5, batch_size=5)
+
+    print("Loading dataset left - right...")
+
+    np_images, np_steering = load_dataset_left.load_dataset_right()
+
+    print("Training the model...")
+
+    history = model.fit(np_images, np_steering, epochs=5, batch_size=5)
+
+    print("Loading dataset right - center...")
+
+    np_images, np_steering = load_dataset_right.load_dataset_center()
+
+    print("Training the model...")
+
+    history = model.fit(np_images, np_steering, epochs=5, batch_size=5)
+
+    print("Loading dataset right - left...")
+
+    np_images, np_steering = load_dataset_right.load_dataset_left()
+
+    print("Training the model...")
+
+    history = model.fit(np_images, np_steering, epochs=5, batch_size=5)
+
+    print("Loading dataset right - right...")
+
+    np_images, np_steering = load_dataset_right.load_dataset_right()
 
     print("Training the model...")
 
