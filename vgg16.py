@@ -82,7 +82,7 @@ def vgg16():
 
 
 
-    for this_layer in model.layers[:16]:
+    for this_layer in model.layers[:17]:
         this_layer.trainable = False
 
     model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
