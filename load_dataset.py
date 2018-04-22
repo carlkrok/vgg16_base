@@ -12,7 +12,7 @@ def load_dataset():
     csv_path = 'track4-counterclockwise.csv'
 
     data_files = pd.read_csv(csv_path, index_col = False)
-    data_files['direction'] = pd.Series('s', index=data_files_s.index)
+    data_files['direction'] = pd.Series('s', index=data_files.index)
     data_files.columns = ['speed', 'steer', 'image', 'direction']
 
     rev_steer = np.array(data_files.steer,dtype=np.float32)
