@@ -13,7 +13,6 @@ RUN apt-get -qq update \
   && apt-get -qq -y install libglib2.0-0 \
   && apt-get install -y libsm6 libxext6 \
   && apt-get install -y libgtk2.0-dev \
-  && apt-get install -y tk \
-  && apt-get install -y cuda-command-line-tools-8-0
+  && apt-get install -y tk 
 
 CMD ["python3", "check_gpu.py"]

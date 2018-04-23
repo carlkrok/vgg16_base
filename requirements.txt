@@ -3,7 +3,7 @@ h5py
 numpy
 matplotlib
 keras
-tensorflow-gpu==1.1
+tensorflow_gpu==1.1.0
 scikit-image
 keras-vis
 opencv-python
