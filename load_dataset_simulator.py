@@ -18,11 +18,11 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
     elif lap == "RIGHT":
         csv_path = 'driving_log_RIGHT.csv'
     elif lap == "mond1":
-        csv_path = 'driving_log_mond1.csv'
+        csv_path = 'driving_log_mond.csv'
     elif lap == "mond2":
-        csv_path = 'driving_log_mond1.csv'
+        csv_path = 'driving_log_mond2.csv'
     elif lap == "mond3":
-        csv_path = 'driving_log_mond1.csv'
+        csv_path = 'driving_log_mond3.csv'
     elif lap == "mond4":
         csv_path = 'driving_log_mond4.csv'
     elif lap == "test":
