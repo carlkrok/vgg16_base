@@ -16,7 +16,7 @@ def main():
     model = load_model("vgg16_test.h5")
     #model = load_model("trained_model_simulator.h5")
 
-    checkpoint = ModelCheckpoint('Saved_models/model-{epoch:03d}.h5', monitor='val_loss',verbose=0,save_best_only=True, mode='auto')
+    checkpoint = ModelCheckpoint('model-{epoch:03d}.h5', monitor='val_loss',verbose=0,save_best_only=True, mode='auto') #Saved_models/
 
     np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
 
@@ -32,7 +32,7 @@ def main():
     print("Creating heatmap...")
     heat_map.heat_map()
 
-    with open('Saved_history/history1.txt', 'wb') as file_pi:
+    with open('history1.txt', 'wb') as file_pi: #Saved_history/
         pickle.dump(history.history, file_pi)
 
     print("Finished!")
