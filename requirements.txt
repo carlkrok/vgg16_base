@@ -1,0 +1,10 @@
+flask-socketio==1.2
+h5py
+numpy
+matplotlib
+keras
+tensorflow-gpu==1.1
+scikit-image
+keras-vis
+opencv-python
+pandas
