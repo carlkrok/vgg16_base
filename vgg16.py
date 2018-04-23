@@ -88,6 +88,6 @@ def vgg16():
     model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
     model.summary()
 
-    save_load_model.save_model(model, "vgg16_test")
+    #save_load_model.save_model(model, "vgg16_test")
 
-    return 0;
+    return model;

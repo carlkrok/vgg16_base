@@ -1,6 +1,5 @@
 import vgg16
-import load_dataset_left
-import load_dataset_right
+import load_dataset_simulator
 import load_dataset_spurv
 import save_load_model
 import heat_map
@@ -11,11 +10,11 @@ import pickle
 def main():
 
     #print("Creating model...")
-    #vgg16.vgg16()
+    model = vgg16.vgg16()
 
     print("Loading model...")
     #model = load_model("vgg16_test.h5")
-    model = load_model("trained_model_simulator.h5")
+    #model = load_model("trained_model_simulator.h5")
 
     checkpoint = ModelCheckpoint('Saved_models/model-{epoch:03d}.h5', monitor='val_loss',verbose=0,save_best_only=True, mode='auto')
 
@@ -24,7 +23,7 @@ def main():
 
     print("Training the model...")
     history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
-    with open('Saved_history/', 'wb') as file_pi:
+    with open('Saved_history.txt', 'wb') as file_pi:
         pickle.dump(history.history, file_pi)
 
     print("Loading dataset LEFT - left...")
@@ -32,7 +31,7 @@ def main():
 
     print("Training the model...")
     history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
-    with open('Saved_history/', 'wb') as file_pi:
+    with open('Saved_history.txt', 'wb') as file_pi:
         pickle.dump(history.history, file_pi)
 
     print("Loading dataset LEFT - right...")
@@ -58,7 +57,7 @@ def main():
 
     print("Training the model...")
     history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
-    with open('Saved_history/', 'wb') as file_pi:
+    with open('Saved_history.txt', 'wb') as file_pi:
         pickle.dump(history.history, file_pi)
 
     print("Saving the model...")
