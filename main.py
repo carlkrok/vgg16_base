@@ -21,7 +21,7 @@ def main():
 
     np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
 
-    for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4"]:
+    for dataset in ["mond", "mond2", "mond3", "mond4"]: #"LEFT", "RIGHT", 
         for camera_angle in ["center", "right", "left"]:
             print("Currently training on dataset: ", dataset, ", angle: ", camera_angle, ".")
             np_images, np_steering = load_dataset_simulator.load_dataset(camera_angle,dataset)
