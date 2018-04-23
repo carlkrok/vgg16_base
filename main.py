@@ -25,43 +25,7 @@ def main():
             print("Currently training on dataset: ", dataset, ", angle: ", camera_angle, ".")
             np_images, np_steering = load_dataset_simulator.load_dataset(camera_angle,dataset)
             history = model.fit(x=np_images, y=np_steering, epochs=10, batch_size=5, callbacks=[checkpoint], validation_data=(np_val_images, np_val_steering))
-'''
-    print("Loading dataset LEFT - center...")
-    np_images, np_steering = load_dataset_simulator.load_dataset("center","LEFT")
 
-    print("Training the model...")
-    history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
-
-    print("Loading dataset LEFT - left...")
-    np_images, np_steering = load_dataset_simulator.load_dataset("left","LEFT")
-
-    print("Training the model...")
-    history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
-
-    print("Loading dataset LEFT - right...")
-    np_images, np_steering = load_dataset_simulator.load_dataset("right","LEFT")
-
-    print("Training the model...")
-    history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
-
-    print("Loading dataset RIGHT - center...")
-    np_images, np_steering = load_dataset_simulator.load_dataset("center","RIGHT")
-
-    print("Training the model...")
-    history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
-
-    print("Loading dataset RIGHT - left...")
-    np_images, np_steering = load_dataset_simulator.load_dataset("left","RIGHT")
-
-    print("Training the model...")
-    history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
-
-    print("Loading dataset RIGHT - right...")
-    np_images, np_steering = load_dataset_simulator.load_dataset("right","RIGHT")
-
-    print("Training the model...")
-    history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
-'''
     print("Saving the model...")
     save_load_model.save_model(model, "trained_model_simulator")
 

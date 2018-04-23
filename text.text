@@ -1,5 +1,36 @@
-Try installing freetype with `apt-get install libfreetype6-dev` and pkg-config with `apt-get install pkg-config`
 
-                        * Try installing png with `apt-get install libpng12-dev` and pkg-config with `apt-get install
+print("Loading dataset LEFT - center...")
+np_images, np_steering = load_dataset_simulator.load_dataset("center","LEFT")
 
-                        * pkg-config`
+print("Training the model...")
+history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
+
+print("Loading dataset LEFT - left...")
+np_images, np_steering = load_dataset_simulator.load_dataset("left","LEFT")
+
+print("Training the model...")
+history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
+
+print("Loading dataset LEFT - right...")
+np_images, np_steering = load_dataset_simulator.load_dataset("right","LEFT")
+
+print("Training the model...")
+history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
+
+print("Loading dataset RIGHT - center...")
+np_images, np_steering = load_dataset_simulator.load_dataset("center","RIGHT")
+
+print("Training the model...")
+history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
+
+print("Loading dataset RIGHT - left...")
+np_images, np_steering = load_dataset_simulator.load_dataset("left","RIGHT")
+
+print("Training the model...")
+history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
+
+print("Loading dataset RIGHT - right...")
+np_images, np_steering = load_dataset_simulator.load_dataset("right","RIGHT")
+
+print("Training the model...")
+history = model.fit(np_images, np_steering, epochs=5, batch_size=5, callbacks=[checkpoint])
