@@ -1,0 +1,5 @@
+Try installing freetype with `apt-get install libfreetype6-dev` and pkg-config with `apt-get install pkg-config`
+
+                        * Try installing png with `apt-get install libpng12-dev` and pkg-config with `apt-get install
+
+                        * pkg-config`

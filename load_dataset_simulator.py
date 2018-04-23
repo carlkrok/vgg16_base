@@ -15,8 +15,19 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 
     if lap == "LEFT":
         csv_path = 'driving_log_LEFT.csv'
-    else if lap == "RIGHT":
+    elif lap == "RIGHT":
         csv_path = 'driving_log_RIGHT.csv'
+    elif lap == "mond1":
+        csv_path = 'driving_log_mond1.csv'
+    elif lap == "mond2":
+        csv_path = 'driving_log_mond1.csv'
+    elif lap == "mond3":
+        csv_path = 'driving_log_mond1.csv'
+    elif lap == "mond4":
+        csv_path = 'driving_log_mond4.csv'
+    elif lap == "test":
+        csv_path = 'driving_log_test.csv'
+
 
 
     data_files = pd.read_csv(csv_path, index_col = False)
