@@ -6,7 +6,7 @@ import cv2
 import math
 import matplotlib.pyplot as plt
 
-range_x=100
+range_x=20
 range_y=10
 
 def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip = True):
