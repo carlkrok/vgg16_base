@@ -20,11 +20,13 @@ def main():
 
     np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
 
-    for dataset in ["LEFT", "RIGHT", "mond1", "mond2", "mond3", "mond4"]:
+    for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4"]:
         for camera_angle in ["center", "right", "left"]:
             print("Currently training on dataset: ", dataset, ", angle: ", camera_angle, ".")
             np_images, np_steering = load_dataset_simulator.load_dataset(camera_angle,dataset)
             history = model.fit(x=np_images, y=np_steering, epochs=10, batch_size=5, callbacks=[checkpoint], validation_data=(np_val_images, np_val_steering))
+            print("Saving the model...")
+            save_load_model.save_model(model, "trained_model_simulator")
 
     print("Saving the model...")
     save_load_model.save_model(model, "trained_model_simulator")
