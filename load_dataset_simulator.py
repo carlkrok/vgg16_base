@@ -63,11 +63,17 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
             image = image/255.-.5
 
             steer = data_files['steer'][i_elem]
+            if camera_angle == "left":
+                steer += 0.2
+            elif camera_angle == "right":
+                steer -= 0.2
+
 
             if aug_flip:
-                if np.random.rand() < 0.5:
+                if np.random.rand() < 0.25:
                     image = cv2.flip(image, 1)
                     steer = -steer
+
 
             if aug_trans:
                 trans_x = range_x * (np.random.rand() - 0.5)
