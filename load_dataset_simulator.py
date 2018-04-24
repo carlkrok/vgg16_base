@@ -14,19 +14,19 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 # USE CAMERA ANGE [left, right, center], LAP [LEFT, RIGHT]
 
     if lap == "LEFT":
-        csv_path = 'driving_log_LEFT.csv'
+        csv_path = 'Datasets/driving_log_LEFT.csv'
     elif lap == "RIGHT":
-        csv_path = 'driving_log_RIGHT.csv'
+        csv_path = 'Datasets/driving_log_RIGHT.csv'
     elif lap == "mond":
-        csv_path = 'driving_log_mond.csv'
+        csv_path = 'Datasets/driving_log_mond.csv'
     elif lap == "mond2":
-        csv_path = 'driving_log_mond2.csv'
+        csv_path = 'Datasets/driving_log_mond2.csv'
     elif lap == "mond3":
-        csv_path = 'driving_log_mond3.csv'
+        csv_path = 'Datasets/driving_log_mond3.csv'
     elif lap == "mond4":
-        csv_path = 'driving_log_mond4.csv'
+        csv_path = 'Datasets/driving_log_mond4.csv'
     elif lap == "test":
-        csv_path = 'driving_log_test.csv'
+        csv_path = 'Datasets/driving_log_test.csv'
     else:
         print("No dataset loaded")
 
