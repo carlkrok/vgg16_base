@@ -8,6 +8,8 @@ from keras.callbacks import ModelCheckpoint
 import pickle
 from keras.callbacks import CSVLogger
 import numpy as np
+import math
+import matplotlib.pyplot as plt
 
 
 
@@ -51,6 +53,9 @@ def main():
 
     print("Saving the model...")
     save_load_model.save_model(model, "trained_model_simulator")
+
+    plt.hist(np_steering, bins=100)
+    plt.show()
 
     #print("Creating heatmap...")
     #heat_map.heat_map()
