@@ -36,8 +36,8 @@ def main():
 
             #len_tot_images = len(new_np_images) + len(np_images)
             #len_tot_steering = len(new_np_steering) + len(np_steering)
-            np_images = np.append(np_images, new_np_images)
-            np_steering = np.append(np_steering, new_np_steering)
+            np_images = np.concatenate(np_images, new_np_images)
+            np_steering = np.concatenate(np_steering, new_np_steering)
 
             #print("Saving the model...")
             #save_load_model.save_model(model, "trained_model_simulator")
