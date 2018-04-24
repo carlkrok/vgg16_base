@@ -27,7 +27,7 @@ def main():
     for dataset in ["LEFT"]: #, "RIGHT", "mond", "mond2", "mond3", "mond4"]:
         for camera_angle in ["center", "right", "left"]:
 
-            if dataset == "RIGHT" && camera_angle == "right":
+            if dataset == "RIGHT" and camera_angle == "right":
                 break
 
             print("Currently loading dataset: ", dataset, ", angle: ", camera_angle, ".")
