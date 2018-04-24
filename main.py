@@ -24,7 +24,7 @@ def main():
     np_images, np_steering = load_dataset_simulator.load_dataset("right","RIGHT")
     np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
 
-    for dataset in ["LEFT"] #, "RIGHT", "mond", "mond2", "mond3", "mond4"]: #
+    for dataset in ["LEFT"]: #, "RIGHT", "mond", "mond2", "mond3", "mond4"]:
         for camera_angle in ["center", "right", "left"]:
 
             if dataset == "RIGHT" && camera_angle == "right":
@@ -51,8 +51,8 @@ def main():
     print("Saving the model...")
     save_load_model.save_model(model, "trained_model_simulator")
 
-    print("Creating heatmap...")
-    heat_map.heat_map()
+    #print("Creating heatmap...")
+    #heat_map.heat_map()
 
     #with open('history1.txt', 'wb') as file_pi: #Saved_history/
     #    pickle.dump(history.history, file_pi)
