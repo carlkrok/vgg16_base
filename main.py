@@ -7,6 +7,7 @@ from keras.models import load_model
 from keras.callbacks import ModelCheckpoint
 import pickle
 from keras.callbacks import CSVLogger
+import numpy as np
 
 
 
