@@ -44,9 +44,15 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 
         image = cv2.imread(data_files[camera_angle][i_elem].strip())
 
+
         if image is not None:
 
-            if i_elem%500 == 0:
+            steer = data_files['steer'][i_elem]
+            if abs(steer) < 0.2:
+                if np.random.rand() < 0.5:
+                    continue
+
+            if i_elem%1000 == 0:
                 print("Image: ", data_files[camera_angle][i_elem].strip(), " -- Steer: ", data_files['steer'][i_elem])
 
 
