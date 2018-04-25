@@ -40,6 +40,8 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
     np_images = np.zeros((data_size, 64, 64, 3))
     np_steering = np.zeros(data_size)
 
+    skip_count = 0
+
     for i_elem in range(data_size):
 
         image = cv2.imread(data_files[camera_angle][i_elem].strip())
@@ -50,10 +52,11 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
             steer = data_files['steer'][i_elem]
             if abs(steer) < 0.2:
                 if np.random.rand() < 0.5:
+                    skip_count += 1
                     continue
 
-            if i_elem%1000 == 0:
-                print("Image: ", data_files[camera_angle][i_elem].strip(), " -- Steer: ", data_files['steer'][i_elem])
+            #if i_elem%1000 == 0:
+            #    print("Image: ", data_files[camera_angle][i_elem].strip(), " -- Steer: ", data_files['steer'][i_elem])
 
 
             shape = image.shape
@@ -93,5 +96,7 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 
             np_images[i_elem] = image
             np_steering[i_elem] = steer
+
+    print("-----SKIPPED ", skip_count, " ITEMS")
 
     return np_images, np_steering;
