@@ -21,3 +21,23 @@ import shutil
 #!chmod 700 /root/.ssh
 #! ssh git@github.com
 ! git push git@github.com:carlkrok/vgg16_base.git
+
+#### GJØR DETTE FOR Å KOBLE TIL ####
+
+import os
+import shutil
+
+#os.mkdir("/root/.ssh/",700 )
+#! ssh-keyscan github.com >> /root/.ssh/known_hosts
+#! chmod 644 /root/.ssh/known_hosts
+#! git config --global user.email "carlmk@stud.ntnu.no"
+#! git config --global user.name "carlkrok"
+#!chmod 600 /root/.ssh/id_rsa
+#!chmod 700 /root/.ssh
+
+
+#### FOR Å PUSHE ####
+
+#!git add .
+#!git commit -m "Trained model"
+! git push git@github.com:carlkrok/vgg16_base.git
