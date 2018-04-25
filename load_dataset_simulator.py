@@ -37,15 +37,14 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 
     data_size = len(data_files)
 
-    np_images = np.zeros((data_size, 64, 64, 3))
-    np_steering = np.zeros(data_size)
+    np_images = np.zeros((1, 64, 64, 3))
+    np_steering = np.zeros(1)
 
     skip_count = 0
 
     for i_elem in range(data_size):
 
         image = cv2.imread(data_files[camera_angle][i_elem].strip())
-
 
         if image is not None:
 
@@ -94,8 +93,13 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 
             image = np.array(image)
 
-            np_images[i_elem] = image
-            np_steering[i_elem] = steer
+            #np_images[i_elem] = image
+            np_images = np.concatenate(np_images, image)
+            np_steering = np.append(np_steering, steering)
+
+            #np_steering[i_elem] = steer
+
+
 
     print("-----SKIPPED ", skip_count, " ITEMS")
 
