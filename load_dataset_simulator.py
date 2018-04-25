@@ -92,9 +92,10 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
                 image = cv2.warpAffine(image, trans_m, (width, height))
 
             image = np.array(image)
+            image = np.expand_dims(image, axis=0)
 
             #np_images[i_elem] = image
-            np_images = np.concatenate((np_images, [image]))
+            np_images = np.concatenate((np_images, image))
             np_steering = np.append(np_steering, steering)
 
             #np_steering[i_elem] = steer
