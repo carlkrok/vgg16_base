@@ -7,7 +7,7 @@ from skimage import transform
 from keras.preprocessing.image import img_to_array
 from keras.models import load_model
 from keras.layers import Activation
-import utils
+from vis.utils import utils
 import cv2
 
 
