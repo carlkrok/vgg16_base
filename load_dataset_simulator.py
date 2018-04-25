@@ -120,12 +120,12 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                     
                     np_images = np.concatenate((np_images, temp_img_array))
                     np_steering = np.append(np_steering, steer+0.01)
-                    index = int(steer/0.0244)
+                    index = int(abs(steer)/0.0244)
                     np_counter_array[index] += 1
 
                     np_images = np.concatenate((np_images, temp_img_array))
                     np_steering = np.append(np_steering, steer-0.01)
-                    index = int(steer/0.0244)
+                    index = int(abs(steer)/0.0244)
                     np_counter_array[index] += 1
 
                     
@@ -140,12 +140,12 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
 
                         np_images = np.concatenate((np_images, temp_img_array))
                         np_steering = np.append(np_steering, steer+0.01)
-                        index = int(steer/0.0244)
+                        index = int(abs(steer)/0.0244)
                         np_counter_array[index] += 1
 
                         np_images = np.concatenate((np_images, temp_img_array))
                         np_steering = np.append(np_steering, steer-0.01)
-                        index = int(steer/0.0244)
+                        index = int(abs(steer)/0.0244)
                         np_counter_array[index] += 1
 
     print("-----SKIPPED ", skip_count, " ITEMS")
