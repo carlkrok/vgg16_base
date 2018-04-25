@@ -56,7 +56,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
             #        continue
 
             
-            index = int(steer/0.0244)
+            index = int(abs(steer)/0.0244)
             
             if np_counter_array[index] < 300:
            
