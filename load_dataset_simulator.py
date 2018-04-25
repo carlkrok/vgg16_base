@@ -66,7 +66,7 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
                 hsv[:,:,2] =  hsv[:,:,2] * ratio
                 image = cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
 
-            #image = image[math.floor(shape[0]/4):shape[0]-25, 0:shape[1]]
+            image = image[int(math.floor(shape[0]/4)):shape[0]-25, 0:shape[1]]
             image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
             image = image/255.-.5
 
