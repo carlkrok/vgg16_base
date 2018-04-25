@@ -60,6 +60,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
 
 
             image = np.array(image)
+            print("SHAPE OF IMAGE: ", image.shape)
             temp_img_array = np.zeros((1, 64, 64, 3))
             temp_img_array[0] = image
             
