@@ -50,10 +50,10 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
         if image is not None:
 
             steer = data_files['steer'][i_elem]
-            if abs(steer) < 0.2:
-                if np.random.rand() < 0.5:
-                    skip_count += 1
-                    continue
+            #if abs(steer) < 0.2:
+            #    if np.random.rand() < 0.5:
+            #        skip_count += 1
+            #        continue
 
             
             index = int(steer/0.0244)
