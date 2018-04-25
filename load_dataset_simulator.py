@@ -39,6 +39,7 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 
     np_images = np.zeros((1, 64, 64, 3))
     np_steering = np.zeros(1)
+    np_counter_array = np.zeros(100)
 
     skip_count = 0
 
@@ -94,11 +95,48 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
             image = np.array(image)
             temp_img_array = np.zeros((1, 64, 64, 3))
             temp_img_array[0] = image
+            
+            index = int(steer/0.0244)
+            
+            if np_counter_array[index] < 300:
+                np_images = np.concatenate((np_images, temp_img_array))
+                np_steering = np.append(np_steering, steer)
+                np_counter_array[index] += 1
+                
+                if abs(steer) > 0.25:
+                    np_images = np.concatenate((np_images, temp_img_array))
+                    np_steering = np.append(np_steering, steer+0.01)
+                    index = int(steer/0.0244)
+                    np_counter_array[index] += 1
 
-            np_images = np.concatenate((np_images, temp_img_array))
-            np_steering = np.append(np_steering, steer)
+                    np_images = np.concatenate((np_images, temp_img_array))
+                    np_steering = np.append(np_steering, steer-0.01)
+                    index = int(steer/0.0244)
+                    np_counter_array[index] += 1
+  
+                    trans_x = range_x * (np.random.rand() - 0.5)
+                    trans_y = range_y * (np.random.rand() - 0.5)
+                    steer += trans_x * 0.002
+                    trans_m = np.float32([[1, 0, trans_x], [0, 1, trans_y]])
+                    height, width = image.shape[:2]
+                    image = cv2.warpAffine(image, trans_m, (width, height))
+                    index = int(steer/0.0244)
+                    
+                    if abs(steer) > 0.6 and np_counter_array[index] < 300:
+         
+                        np_images = np.concatenate((np_images, temp_img_array))
+                        np_steering = np.append(np_steering, steer)
+                        np_counter_array[index] += 1
+                        
+                        np_images = np.concatenate((np_images, temp_img_array))
+                        np_steering = np.append(np_steering, steer+0.01)
+                        index = int(steer/0.0244)
+                        np_counter_array[index] += 1
 
-
+                        np_images = np.concatenate((np_images, temp_img_array))
+                        np_steering = np.append(np_steering, steer-0.01)
+                        index = int(steer/0.0244)
+                        np_counter_array[index] += 1
 
     print("-----SKIPPED ", skip_count, " ITEMS")
 
