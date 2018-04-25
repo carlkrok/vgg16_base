@@ -1,4 +1,4 @@
-%matplotlib inline
+#%matplotlib inline
 
 import numpy as np
 import math
@@ -16,10 +16,11 @@ FRAME_W = 64
 
 pred_image = np.zeros((1, 64, 64, 3))
 
-model = load_model('trained_model_simulator.h5')
-#image = utils.load_img('Datasets/IMG_LEFT/center_2018_04_22_16_24_41_584.jpg') # Should be 0.3705882
+#model = load_model('trained_model_simulator.h5')
+model = load_model('model-007.h5')
+image = utils.load_img('Datasets/IMG_LEFT/center_2018_04_22_16_24_41_584.jpg') # Should be 0.3705882
 #image = utils.load_img('Datasets/IMG_LEFT/center_2018_04_22_16_23_27_935.jpg')  # Should be -0.2117647
-image = utils.load_img('Datasets/IMG_LEFT/center_2018_04_22_16_23_34_066.jpg') # Should be -0.06470589
+#image = utils.load_img('Datasets/IMG_LEFT/center_2018_04_22_16_23_34_066.jpg') # Should be -0.06470589
 
 shape = image.shape
 image_pred = image/255.-.5
@@ -66,5 +67,3 @@ for i, modifier in enumerate(modifiers):
     # Overlay is used to alpha blend heatmap onto img.
     plt.imshow(overlay(image, heatmap, alpha=0.7))
     plt.show()
-
-
