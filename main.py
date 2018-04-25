@@ -23,7 +23,7 @@ def main():
     #model = load_model("trained_model_simulator.h5")
     #model = load_model("model-010.h5")
     
-    csv_logger = CSVLogger('log.csv', append=True, separator=';')
+    csv_logger = CSVLogger('log_balanced_data.csv', append=True, separator=';')
     checkpoint = ModelCheckpoint('model-{epoch:03d}.h5', monitor='val_loss',verbose=0,save_best_only=True, mode='auto') #Saved_models
     
     #print("Loading datasets...")
