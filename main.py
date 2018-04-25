@@ -24,17 +24,18 @@ def main():
     #model = load_model("model-010.h5")
     
     csv_logger = CSVLogger('log.csv', append=True, separator=';')
-    checkpoint = ModelCheckpoint('model-{epoch:03d}.h5', monitor='val_loss',verbose=0,save_best_only=True, mode='auto') #Saved_models
+    checkpoint = ModelCheckpoint('curr_best_model.h5', monitor='val_loss',verbose=0,save_best_only=True, mode='auto') #Saved_models
+    
     
     #print("Loading datasets...")
     #np_images, np_steering = load_dataset_simulator.load_dataset("right","RIGHT")
     np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
 
-    for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4"]:
+    for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4", "track1_rewind", "track2"]:
         for camera_angle in ["center", "right", "left"]:
 
-            #if dataset == "RIGHT" and camera_angle == "right":
-            #    break
+            if dataset != "LEFT" and camera_angle != "center":
+                model = load_model("curr_best_model.h5")
 
             print("Currently loading dataset: ", dataset, ", angle: ", camera_angle, ".")
             np_images, np_steering = load_dataset_simulator.load_dataset(camera_angle,dataset)
