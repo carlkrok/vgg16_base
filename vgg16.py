@@ -64,6 +64,7 @@ def vgg16():
 
 
     top_model = Flatten()(x)
+    top_model = Dropout(0.5)(top_model)
 
     # Regression part
     fc1 = Dense(100, activation='elu')(top_model)
@@ -82,7 +83,7 @@ def vgg16():
 
 
 
-    for this_layer in model.layers[:17]:
+    for this_layer in model.layers[:14]:
         this_layer.trainable = False
 
     model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
