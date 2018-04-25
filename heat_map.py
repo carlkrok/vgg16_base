@@ -28,10 +28,10 @@ image_pred = image/255.-.5
 image = np.array(image)
 image_pred = np.array(image_pred)
 
-image = image[math.floor(shape[0]/4):shape[0]-25, 0:shape[1]]
+image = image[int(math.floor(shape[0]/4)):shape[0]-25, 0:shape[1]]
 image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
 
-image_pred = image_pred[math.floor(shape[0]/4):shape[0]-25, 0:shape[1]]
+image_pred = image_pred[int(math.floor(shape[0]/4)):shape[0]-25, 0:shape[1]]
 image_pred = cv2.resize(image_pred,(64,64), interpolation=cv2.INTER_AREA)
 
 plt.figure()
