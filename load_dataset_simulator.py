@@ -95,11 +95,8 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
             temp_img_array = np.zeros((1, 64, 64, 3))
             temp_img_array[0] = image
 
-            #np_images[i_elem] = image
             np_images = np.concatenate((np_images, temp_img_array))
-            np_steering = np.append(np_steering, steering)
-
-            #np_steering[i_elem] = steer
+            np_steering = np.append(np_steering, steer)
 
 
 
