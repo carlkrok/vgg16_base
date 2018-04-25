@@ -45,6 +45,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
     for i_elem in range(data_size):
 
         image = cv2.imread(data_files[camera_angle][i_elem].strip())
+        image_copy = image
 
         if image is not None:
 
@@ -54,15 +55,6 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                     skip_count += 1
                     continue
 
-            #if i_elem%1000 == 0:
-            #    print("Image: ", data_files[camera_angle][i_elem].strip(), " -- Steer: ", data_files['steer'][i_elem])
-
-
-            shape = image.shape
-            image = image[int(math.floor(shape[0]/4)):shape[0]-25, 0:shape[1]]
-            image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
-            image = image/255.-.5
-            
             temp_img_array = np.zeros((1, 64, 64, 3))
             temp_img_array[0] = image
             
@@ -70,14 +62,17 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
             
             if np_counter_array[index] < 300:
            
-
+                
                 if aug_bright:
                     hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
                     ratio = 1.0 + 0.4 * (np.random.rand() - 0.5)
                     hsv[:,:,2] =  hsv[:,:,2] * ratio
                     image = cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
 
-        
+                shape = image.shape
+                image = image[int(math.floor(shape[0]/4)):shape[0]-25, 0:shape[1]]
+                image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
+                image = image/255.-.5
 
                 steer = data_files['steer'][i_elem]
                 if camera_angle == "left":
@@ -101,6 +96,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                 #    image = cv2.warpAffine(image, trans_m, (width, height))
                 
                 image = np.array(image)
+                
                 np_images = np.concatenate((np_images, temp_img_array))
                 np_steering = np.append(np_steering, steer)
                 np_counter_array[index] += 1
