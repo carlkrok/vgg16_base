@@ -37,8 +37,8 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 
     data_size = len(data_files)
 
-    np_images = np.zeros((64, 64, 3)) #1,
-    np_steering = np.zeros(1)
+    np_images = np.empty((64, 64, 3)) #1,
+    np_steering = np.empty(1)
 
     skip_count = 0
 
