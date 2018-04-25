@@ -55,7 +55,7 @@ def main():
 
 
     print("Saving the model...")
-    save_load_model.save_model(model, "trained_model_simulator")
+    save_load_model.save_model(model, "trained_model_tuesday_vgg16")
 
     #plt.hist(np_steering, bins=100)
     #plt.show()
