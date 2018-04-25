@@ -41,7 +41,7 @@ def main():
             np_images, np_steering = load_dataset_simulator.load_dataset(camera_angle,dataset)
             
             print("Training the model...")
-            history = model.fit(x=np_images, y=np_steering, epochs=50, batch_size=4, callbacks=[checkpoint, csv_logger], validation_data=(np_val_images, np_val_steering))
+            history = model.fit(x=np_images, y=np_steering, epochs=50, batch_size=16, callbacks=[checkpoint, csv_logger], validation_data=(np_val_images, np_val_steering))
 
 
             #len_tot_images = len(new_np_images) + len(np_images)
