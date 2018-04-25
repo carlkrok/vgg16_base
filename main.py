@@ -23,7 +23,7 @@ def main():
     #model = load_model("trained_model_simulator.h5")
     #model = load_model("model-010.h5")
     
-    csv_logger = CSVLogger('log.csv', append=True, separator=';')
+    csv_logger = CSVLogger('log_wednesday.csv', append=True, separator=';')
     checkpoint = ModelCheckpoint('curr_best_model.h5', monitor='val_loss',verbose=0,save_best_only=True, mode='auto') #Saved_models
     
     
@@ -55,7 +55,7 @@ def main():
 
 
     print("Saving the model...")
-    save_load_model.save_model(model, "trained_model_tuesday_vgg16")
+    save_load_model.save_model(model, "trained_model_wednesday")
 
     #plt.hist(np_steering, bins=100)
     #plt.show()
