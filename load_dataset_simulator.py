@@ -56,7 +56,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
             #        continue
 
             
-            index = int(abs(steer)/0.0244)
+            index = int((steer+1.12)/0.0244)
             
             if np_counter_array[index] < 300:
            
@@ -120,17 +120,17 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                     
                     np_images = np.concatenate((np_images, temp_img_array))
                     np_steering = np.append(np_steering, steer+0.01)
-                    index = int(abs(steer)/0.0244)
+                    index = int((steer+1.12)/0.0244)
                     np_counter_array[index] += 1
 
                     np_images = np.concatenate((np_images, temp_img_array))
                     np_steering = np.append(np_steering, steer-0.01)
-                    index = int(abs(steer)/0.0244)
+                    index = int((steer+1.12)/0.0244)
                     np_counter_array[index] += 1
 
                     
 
-                    index = int(steer/0.0244)
+                    index = int((steer+1.12)/0.0244)
 
                     if abs(steer) > 0.6 and np_counter_array[index] < 300:
                         
@@ -140,12 +140,12 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
 
                         np_images = np.concatenate((np_images, temp_img_array))
                         np_steering = np.append(np_steering, steer+0.01)
-                        index = int(abs(steer)/0.0244)
+                        index = int((steer+1.12)/0.0244)
                         np_counter_array[index] += 1
 
                         np_images = np.concatenate((np_images, temp_img_array))
                         np_steering = np.append(np_steering, steer-0.01)
-                        index = int(abs(steer)/0.0244)
+                        index = int((steer+1.12)/0.0244)
                         np_counter_array[index] += 1
 
     print("-----SKIPPED ", skip_count, " ITEMS")
