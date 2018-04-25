@@ -56,7 +56,6 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
             
             image = image[math.floor(shape[0]/4):shape[0]-25, 0:shape[1]]
             image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
-            image = image/255.-.5
 
             steer = data_files['steer'][i_elem]
             if abs(steer) < 0.10:
@@ -93,6 +92,7 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
               #  height, width = image.shape[:2]
               #  image = cv2.warpAffine(image, trans_m, (width, height))
 
+            image = image/255.-.5
             image = np.array(image)
             
             #image = np.expand_dims(image, axis=0)
