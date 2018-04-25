@@ -52,6 +52,7 @@ def vgg16():
     x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv2')(x)
     x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv3')(x)
     x = MaxPooling2D((2, 2), strides=(2, 2), name='block5_pool')(x)
+    x = Dropout(0.5)(x)
 
     base_model = Model(img_input, x, name='vgg16')
 
@@ -61,6 +62,7 @@ def vgg16():
 
     #base_model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
     #base_model.summary()
+   
 
 
     top_model = Flatten()(x)
