@@ -37,7 +37,7 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 
     data_size = len(data_files)
 
-    np_images = np.zeros((1, 64, 64, 3))
+    np_images = np.zeros((64, 64, 3)) #1,
     np_steering = np.zeros(1)
 
     skip_count = 0
@@ -92,7 +92,7 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
                 image = cv2.warpAffine(image, trans_m, (width, height))
 
             image = np.array(image)
-            image = np.expand_dims(image, axis=0)
+            #image = np.expand_dims(image, axis=0)
 
             #np_images[i_elem] = image
             np_images = np.concatenate((np_images, image))
