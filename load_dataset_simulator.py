@@ -60,6 +60,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
 
 
             image = np.array(image)
+            shape = image.shape
             image = image[int(math.floor(shape[0]/4)):shape[0]-25, 0:shape[1]]
             image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
             image = image/255.-.5
@@ -70,7 +71,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
             index = int(steer/0.0244)
             
             if np_counter_array[index] < 300:
-                shape = image.shape
+           
 
                 if aug_bright:
                     hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
