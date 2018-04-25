@@ -59,7 +59,7 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 
 
             shape = image.shape
-            print('Shape: ', shape)
+
             if aug_bright:
                 hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
                 ratio = 1.0 + 0.4 * (np.random.rand() - 0.5)
