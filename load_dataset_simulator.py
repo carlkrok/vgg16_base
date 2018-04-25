@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 range_x=20
 range_y=10
 
-def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip = True, np_counter_array):
+def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright = True, aug_flip = True):
 
 # USE CAMERA ANGE [left, right, center], LAP [LEFT, RIGHT]
 
