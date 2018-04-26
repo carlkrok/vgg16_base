@@ -107,6 +107,7 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
         else:
             print("DID NOT FIND: ", camera_angle, lap)
             skip_count += 1
+            
 
     print("-----SKIPPED ", skip_count, " ITEMS")
 
