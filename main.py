@@ -2,7 +2,7 @@ import vgg16
 import load_dataset_simulator
 import load_dataset_spurv
 import save_load_model
-import heat_map
+#import heat_map
 from keras.models import load_model
 from keras.callbacks import ModelCheckpoint
 import pickle
@@ -29,7 +29,14 @@ def main():
 
     #print("Loading datasets...")
     np_images, np_steering = load_dataset_simulator.load_dataset("center","LEFT")
-    #np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
+
+    np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
+    print("Length of val images: ", len(np_val_images))
+    np.save("np_images",np_val_images)
+
+    print("Length of val steer: ", len(np_val_steering))
+    np.save("np_steering",np_val_steering)
+
 
     for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4", "track1_rewind", "track2"]:
         for camera_angle in ["center", "right", "left"]:
