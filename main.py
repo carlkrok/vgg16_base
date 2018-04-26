@@ -92,10 +92,10 @@ def main():
     np.save("np_steering",np_steering)
     
     print("Length of images 2: ", len(np_images_2))
-    np.save("np_images",np_images_2)
+    np.save("np_images_2",np_images_2)
 
     print("Length of steer 2: ", len(np_steering_2))
-    np.save("np_steering",np_steering_2)
+    np.save("np_steering_2",np_steering_2)
     #save_load_model.save_model(model, "trained_model_wednesday")
 
     #plt.hist(np_steering, bins=100)
