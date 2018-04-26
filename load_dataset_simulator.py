@@ -58,7 +58,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
             
             index = int((steer+1.12)/0.0244)
             
-            if np_counter_array[index] < 300:
+            if np_counter_array[index] < 200:
            
                 
                 if aug_bright:
