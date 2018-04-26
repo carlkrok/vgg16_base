@@ -34,6 +34,16 @@ def main():
     np_images_2, np_steering_2 = load_dataset_simulator.load_dataset("center","mond4")
 
     np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
+    np_val_images_new, np_val_steering_new = load_dataset_simulator.load_dataset("right","test")
+
+    np_val_images = np.concatenate((np_val_images, np_val_images_new))
+    np_val_steering = np.concatenate((np_val_steering, np_val_steering_new))
+    
+    np_val_images_new, np_val_steering_new = load_dataset_simulator.load_dataset("left","test")
+
+    np_val_images = np.concatenate((np_val_images, np_val_images_new))
+    np_val_steering = np.concatenate((np_val_steering, np_val_steering_new))
+    
     print("Length of val images: ", len(np_val_images))
     np.save("np_images",np_val_images)
 
@@ -44,8 +54,16 @@ def main():
 
     for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4", "track1_rewind", "track2"]:
         for camera_angle in ["center", "right", "left"]:
+            
+            if dataset == "LEFT" and camera_angle == "center":
+                #Do nuthin
+                continue
+                
+            elif dataset == "mond4" and camera_angle == "center":
+                #Do nuthin
+                continue
 
-            if dataset != "LEFT" and camera_angle != "center" and use_2 != True:
+            elif use_2 != True:
                 #model = load_model("curr_best_model.h5")
                 np_images_new, np_steering_new = load_dataset_simulator.load_dataset(camera_angle,dataset)
 
@@ -55,14 +73,12 @@ def main():
                 if dataset == "mond3" and camera_angle == "left":
                     use_2 = True
                 
-                
-                
             elif use_2:
                 #model = load_model("curr_best_model.h5")
                 np_images_new, np_steering_new = load_dataset_simulator.load_dataset(camera_angle,dataset)
 
-                np_images_2 = np.concatenate((np_images, np_images_new))
-                np_steering_2 = np.concatenate((np_steering, np_steering_new))
+                np_images_2 = np.concatenate((np_images_2, np_images_new))
+                np_steering_2 = np.concatenate((np_steering_2, np_steering_new))
 
 
 
