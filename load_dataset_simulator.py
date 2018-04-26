@@ -130,23 +130,23 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
 
                     
 
-                    index = int((steer+1.12)/0.0244)
+                    #index = int((steer+1.12)/0.0244)
 
-                    if abs(steer) > 0.6 and np_counter_array[index] < 300:
+                    #if abs(steer) > 0.6 and np_counter_array[index] < 300:
                         
                         #np_images = np.concatenate((np_images, temp_img_array))
                         #np_steering = np.append(np_steering, steer)
                         #np_counter_array[index] += 1
 
-                        np_images = np.concatenate((np_images, temp_img_array))
-                        np_steering = np.append(np_steering, steer+0.01)
-                        index = int((steer+1.12)/0.0244)
-                        np_counter_array[index] += 1
+                     #   np_images = np.concatenate((np_images, temp_img_array))
+                     #   np_steering = np.append(np_steering, steer+0.01)
+                     #   index = int((steer+1.12)/0.0244)
+                     #   np_counter_array[index] += 1
 
-                        np_images = np.concatenate((np_images, temp_img_array))
-                        np_steering = np.append(np_steering, steer-0.01)
-                        index = int((steer+1.12)/0.0244)
-                        np_counter_array[index] += 1
+                     #   np_images = np.concatenate((np_images, temp_img_array))
+                     #   np_steering = np.append(np_steering, steer-0.01)
+                     #   index = int((steer+1.12)/0.0244)
+                     #   np_counter_array[index] += 1
 
     print("-----SKIPPED ", skip_count, " ITEMS")
     print("------- Number of images: ", len(np_images), " --- Number of angles: ", len(np_steering))
