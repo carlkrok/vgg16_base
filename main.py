@@ -74,7 +74,6 @@ def main():
                 continue
 
             elif use_2 != True:
-                continue
                 #model = load_model("curr_best_model.h5")
                 np_images_new, np_steering_new = load_dataset_simulator.load_dataset(camera_angle,dataset)
 
@@ -90,6 +89,7 @@ def main():
                 np_steering_2 = np.concatenate((np_steering_2, np_steering_new))
                 
             elif use_3:
+                continue
                 #model = load_model("curr_best_model.h5")
                 np_images_new, np_steering_new = load_dataset_simulator.load_dataset(camera_angle,dataset)
 
