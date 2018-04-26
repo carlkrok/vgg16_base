@@ -29,11 +29,11 @@ def main():
 
 
     #print("Loading datasets...")
-    np_images, np_steering = load_dataset_simulator.load_dataset("center","LEFT")
+    #np_images, np_steering = load_dataset_simulator.load_dataset("center","LEFT")
     
-    np_images_2, np_steering_2 = load_dataset_simulator.load_dataset("center","mond2")
+    #np_images_2, np_steering_2 = load_dataset_simulator.load_dataset("center","mond2")
     
-    np_images_3, np_steering_3 = load_dataset_simulator.load_dataset("center","track1_rewind")
+    #np_images_3, np_steering_3 = load_dataset_simulator.load_dataset("center","track1_rewind")
 
     np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
     np_val_images_new, np_val_steering_new = load_dataset_simulator.load_dataset("right","test")
@@ -57,6 +57,8 @@ def main():
 
     for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4", "track1_rewind", "track2"]:
         for camera_angle in ["center", "right", "left"]:
+            
+            continue
             
             if dataset == "LEFT" and camera_angle == "center":
                 #Do nuthin
@@ -115,23 +117,30 @@ def main():
 
     print("Saving the model...")
 
-    print("Length of images: ", len(np_images))
-    np.save("np_images",np_images)
+    #print("Length of images: ", len(np_images))
+    #np.save("np_images",np_images)
 
-    print("Length of steer: ", len(np_steering))
-    np.save("np_steering",np_steering)
+    #print("Length of steer: ", len(np_steering))
+    #np.save("np_steering",np_steering)
     
-    print("Length of images 2: ", len(np_images_2))
-    np.save("np_images_2",np_images_2)
+    #print("Length of images 2: ", len(np_images_2))
+    #np.save("np_images_2",np_images_2)
 
-    print("Length of steer 2: ", len(np_steering_2))
-    np.save("np_steering_2",np_steering_2)
+    #print("Length of steer 2: ", len(np_steering_2))
+    #np.save("np_steering_2",np_steering_2)
     
-    print("Length of images 3: ", len(np_images_3))
-    np.save("np_images_3",np_images_3)
+    #print("Length of images 3: ", len(np_images_3))
+    #np.save("np_images_3",np_images_3)
 
-    print("Length of steer 3: ", len(np_steering_3))
-    np.save("np_steering_3",np_steering_3)
+    #print("Length of steer 3: ", len(np_steering_3))
+    #np.save("np_steering_3",np_steering_3)
+    
+    print("Length of images val: ", len(np_val_images))
+    np.save("np_val_images",np_val_images)
+    
+    print("Length of steer val: ", len(np_val_steering))
+    np.save("np_val_steering",np_val_steering)
+    
     #save_load_model.save_model(model, "trained_model_wednesday")
 
     #plt.hist(np_steering, bins=100)
