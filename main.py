@@ -28,26 +28,26 @@ def main():
     #checkpoint = ModelCheckpoint('curr_best_model.h5', monitor='val_loss',verbose=0,save_best_only=True, mode='auto') #Saved_models
 
 
-    #print("Loading datasets...")
-    #np_images, np_steering = load_dataset_simulator.load_dataset("center","LEFT")
+    print("Loading datasets...")
+    np_images, np_steering = load_dataset_simulator.load_dataset("center","LEFT")
     
     #np_images_2, np_steering_2 = load_dataset_simulator.load_dataset("center","mond2")
     
     #np_images_3, np_steering_3 = load_dataset_simulator.load_dataset("center","track1_rewind")
 
-    np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
-    np_val_images_new, np_val_steering_new = load_dataset_simulator.load_dataset("right","test")
+    #np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
+    #np_val_images_new, np_val_steering_new = load_dataset_simulator.load_dataset("right","test")
 
-    np_val_images = np.concatenate((np_val_images, np_val_images_new))
-    np_val_steering = np.concatenate((np_val_steering, np_val_steering_new))
+    #np_val_images = np.concatenate((np_val_images, np_val_images_new))
+    #np_val_steering = np.concatenate((np_val_steering, np_val_steering_new))
     
-    np_val_images_new, np_val_steering_new = load_dataset_simulator.load_dataset("left","test")
+    #np_val_images_new, np_val_steering_new = load_dataset_simulator.load_dataset("left","test")
 
-    np_val_images = np.concatenate((np_val_images, np_val_images_new))
-    np_val_steering = np.concatenate((np_val_steering, np_val_steering_new))
+    #np_val_images = np.concatenate((np_val_images, np_val_images_new))
+    #np_val_steering = np.concatenate((np_val_steering, np_val_steering_new))
     
-    print("Length of val images: ", len(np_val_images))
-    np.save("np_images",np_val_images)
+    #print("Length of val images: ", len(np_val_images))
+    #np.save("np_images",np_val_images)
 
     print("Length of val steer: ", len(np_val_steering))
     np.save("np_steering",np_val_steering)
@@ -57,8 +57,6 @@ def main():
 
     for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4", "track1_rewind", "track2"]:
         for camera_angle in ["center", "right", "left"]:
-            
-            continue
             
             if dataset == "LEFT" and camera_angle == "center":
                 #Do nuthin
@@ -76,6 +74,7 @@ def main():
                 continue
 
             elif use_2 != True:
+                continue
                 #model = load_model("curr_best_model.h5")
                 np_images_new, np_steering_new = load_dataset_simulator.load_dataset(camera_angle,dataset)
 
@@ -83,6 +82,7 @@ def main():
                 np_steering = np.concatenate((np_steering, np_steering_new))
 
             elif use_2 and use_3 != True:
+                continue
                 #model = load_model("curr_best_model.h5")
                 np_images_new, np_steering_new = load_dataset_simulator.load_dataset(camera_angle,dataset)
 
@@ -117,11 +117,11 @@ def main():
 
     print("Saving the model...")
 
-    #print("Length of images: ", len(np_images))
-    #np.save("np_images",np_images)
+    print("Length of images: ", len(np_images))
+    np.save("np_images",np_images)
 
-    #print("Length of steer: ", len(np_steering))
-    #np.save("np_steering",np_steering)
+    print("Length of steer: ", len(np_steering))
+    np.save("np_steering",np_steering)
     
     #print("Length of images 2: ", len(np_images_2))
     #np.save("np_images_2",np_images_2)
@@ -135,11 +135,11 @@ def main():
     #print("Length of steer 3: ", len(np_steering_3))
     #np.save("np_steering_3",np_steering_3)
     
-    print("Length of images val: ", len(np_val_images))
-    np.save("np_val_images",np_val_images)
+    #print("Length of images val: ", len(np_val_images))
+    #np.save("np_val_images",np_val_images)
     
-    print("Length of steer val: ", len(np_val_steering))
-    np.save("np_val_steering",np_val_steering)
+    #print("Length of steer val: ", len(np_val_steering))
+    #np.save("np_val_steering",np_val_steering)
     
     #save_load_model.save_model(model, "trained_model_wednesday")
 
