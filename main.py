@@ -16,8 +16,8 @@ import matplotlib.pyplot as plt
 
 def main():
 
-    print("Creating model...")
-    vgg16.vgg16()
+    #print("Creating model...")
+    #vgg16.vgg16()
 
     #print("Loading model...")
     #model = load_model("vgg16_test.h5")
@@ -32,10 +32,10 @@ def main():
     np_images, np_steering = load_dataset_simulator.load_dataset("center","LEFT")
 
     #np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
-    print("Length of val images: ", len(np_val_images))
+    #print("Length of val images: ", len(np_val_images))
     #np.save("np_images",np_val_images)
 
-    print("Length of val steer: ", len(np_val_steering))
+    #print("Length of val steer: ", len(np_val_steering))
     #np.save("np_steering",np_val_steering)
 
 
