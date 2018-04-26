@@ -49,8 +49,8 @@ def main():
     #print("Length of val images: ", len(np_val_images))
     #np.save("np_images",np_val_images)
 
-    print("Length of val steer: ", len(np_val_steering))
-    np.save("np_steering",np_val_steering)
+    #print("Length of val steer: ", len(np_val_steering))
+    #np.save("np_steering",np_val_steering)
 
     use_2 = False
     use_3 = False
