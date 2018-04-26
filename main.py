@@ -39,7 +39,7 @@ def main():
     np.save("np_steering",np_val_steering)
 
 
-    for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4"]:
+    for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4", "track1_rewind", "track2"]:
         for camera_angle in ["center", "right", "left"]:
 
             if dataset != "LEFT" and camera_angle != "center":
@@ -66,19 +66,6 @@ def main():
             #print("Saving the model...")
             #save_load_model.save_model(model, "trained_model_simulator")
             #print("Length of dataset so far: ", len(np_images), " images, ", len(np_steering), " steering angles.")
-
-
-
-
-    np_images_new, np_steering_new = load_dataset_simulator.load_dataset("center","track1_rewind")
-
-    np_images = np.concatenate((np_images, np_images_new))
-    np_steering = np.concatenate((np_steering, np_steering_new))
-
-    np_images_new, np_steering_new = load_dataset_simulator.load_dataset("center","track2")
-
-    np_images = np.concatenate((np_images, np_images_new))
-    np_steering = np.concatenate((np_steering, np_steering_new))
 
 
     print("Saving the model...")
