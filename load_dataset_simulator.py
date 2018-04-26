@@ -56,7 +56,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
             #        continue
 
             
-            index = int((steer+1.12)/0.0244)
+            index = int((steer+1.24)/0.025)
             
             if np_counter_array[index] < 200:
            
@@ -79,10 +79,10 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                     steer -= 0.2
                    
 
-                if aug_flip:
-                    if np.random.rand() < 0.25:
-                        image = cv2.flip(image, 1)
-                        steer = -steer
+                #if aug_flip:
+                #    if np.random.rand() < 0.25:
+                #        image = cv2.flip(image, 1)
+                #        steer = -steer
                 
                 image_copy = image
 
@@ -120,12 +120,12 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                     
                     np_images = np.concatenate((np_images, temp_img_array))
                     np_steering = np.append(np_steering, steer+0.01)
-                    index = int((steer+1.12)/0.0244)
+                    index = int((steer+1.24)/0.025)
                     np_counter_array[index] += 1
 
                     np_images = np.concatenate((np_images, temp_img_array))
                     np_steering = np.append(np_steering, steer-0.01)
-                    index = int((steer+1.12)/0.0244)
+                    index = int((steer+1.24)/0.025)
                     np_counter_array[index] += 1
 
                     
