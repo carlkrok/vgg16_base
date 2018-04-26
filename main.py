@@ -47,7 +47,7 @@ def main():
                 np_images_new, np_steering_new = load_dataset_simulator.load_dataset(camera_angle,dataset)
 
                 np_images = np.concatenate((np_images, np_images_new))
-                np_steering = np.append(np_steering, np_steering_new)
+                np_steering = np.concatenate((np_steering, np_steering_new))
 
 
 
