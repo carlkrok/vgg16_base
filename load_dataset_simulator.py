@@ -58,7 +58,7 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
             image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
 
             steer = data_files['steer'][i_elem]
-            if abs(steer) < 0.10:
+            if abs(steer) < 0.10 and camera_angle == "center":
                 trans_x = range_x * (np.random.rand() - 0.5)
                 trans_y = range_y * (np.random.rand() - 0.5)
                 steer += trans_x * 0.002
