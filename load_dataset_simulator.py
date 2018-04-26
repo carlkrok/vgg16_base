@@ -51,9 +51,9 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
         image = cv2.imread(data_files[camera_angle][i_elem].strip())
 
         if image is not None:
-            
+
             shape = image.shape
-            
+
             image = image[math.floor(shape[0]/4):shape[0]-25, 0:shape[1]]
             image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
 
@@ -94,7 +94,7 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
 
             image = image/255.-.5
             image = np.array(image)
-            
+
             #image = np.expand_dims(image, axis=0)
 
             np_images[i_elem] = image
@@ -104,6 +104,9 @@ def load_dataset(camera_angle,lap,aug_trans = True,aug_bright = True, aug_flip =
             np_steering[i_elem] = steer
 
 
+        else:
+            print("DID NOT FIND: ", camera_angle, lap)
+            skip_count += 1
 
     print("-----SKIPPED ", skip_count, " ITEMS")
 

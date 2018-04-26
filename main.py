@@ -31,12 +31,12 @@ def main():
     #print("Loading datasets...")
     np_images, np_steering = load_dataset_simulator.load_dataset("center","LEFT")
 
-    #np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
-    #print("Length of val images: ", len(np_val_images))
-    #np.save("np_images",np_val_images)
+    np_val_images, np_val_steering = load_dataset_simulator.load_dataset("center","test")
+    print("Length of val images: ", len(np_val_images))
+    np.save("np_images",np_val_images)
 
-    #print("Length of val steer: ", len(np_val_steering))
-    #np.save("np_steering",np_val_steering)
+    print("Length of val steer: ", len(np_val_steering))
+    np.save("np_steering",np_val_steering)
 
 
     for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4", "track1_rewind", "track2"]:
@@ -46,7 +46,7 @@ def main():
                 #model = load_model("curr_best_model.h5")
                 np_images_new, np_steering_new = load_dataset_simulator.load_dataset(camera_angle,dataset)
 
-                #np_images = np.concatenate((np_images, np_images_new))
+                np_images = np.concatenate((np_images, np_images_new))
                 np_steering = np.concatenate((np_steering, np_steering_new))
 
 
@@ -70,8 +70,8 @@ def main():
 
     print("Saving the model...")
 
-    #print("Length of images: ", len(np_images))
-    #np.save("np_images",np_images)
+    print("Length of images: ", len(np_images))
+    np.save("np_images",np_images)
 
     print("Length of steer: ", len(np_steering))
     np.save("np_steering",np_steering)
