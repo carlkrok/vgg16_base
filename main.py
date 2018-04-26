@@ -74,7 +74,7 @@ def main():
     #np.save("np_images",np_images)
 
     print("Length of steer: ", len(np_steering))
-    np.save("np_steering",np_images)
+    np.save("np_steering",np_steering)
     #save_load_model.save_model(model, "trained_model_wednesday")
 
     #plt.hist(np_steering, bins=100)
