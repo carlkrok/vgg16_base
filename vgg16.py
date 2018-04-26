@@ -95,7 +95,7 @@ def vgg16():
 
 
     slow_adam = Adam(lr=0.0001)
-    model.compile(loss='mean_squared_error', optimizer='slow_adam', metrics=['accuracy'])
+    model.compile(loss='mean_squared_error', optimizer=slow_adam, metrics=['accuracy'])
     model.summary()
 
     save_load_model.save_model(model, "vgg16_batchnorm_slowlearning")
