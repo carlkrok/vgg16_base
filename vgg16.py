@@ -69,10 +69,10 @@ def vgg16():
     top_model = Flatten()(x)
 
     # Regression part
-    fc1 = Dense(100, activation='elu')(top_model)
-    fc2 = Dense(50, activation='elu')(fc1)
-    fc3 = Dense(10, activation='elu')(fc2)
-    prediction = Dense(1, activation='elu')(fc3)
+    fc1 = Dense(100, activation='tanh')(top_model)
+    fc2 = Dense(50, activation='tanh')(fc1)
+    fc3 = Dense(10, activation='tanh')(fc2)
+    prediction = Dense(1, activation='tanh')(fc3)
 
     model = Model(inputs=img_input, outputs=prediction)
 
