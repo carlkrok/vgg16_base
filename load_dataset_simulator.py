@@ -84,7 +84,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
     
     temp_img_array = np.zeros((1,64,64,3))
     temp_img_array[0] = image
-    np_images = np.concatenate((np_images, temp_img_array))
+    np_images[0] = image
     
     index = get_index(steer)
     np_counter_array[index] += 1
