@@ -46,12 +46,12 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
 
     skip_count = 0
     
-    image = cv2.imread(data_files[camera_angle][i_elem].strip())
+    image = cv2.imread(data_files[camera_angle][0].strip())
     counter = 0
     
     while image is None:
         counter += 1
-        image = cv2.imread(data_files[camera_angle][i_elem+counter].strip())
+        image = cv2.imread(data_files[camera_angle][counter].strip())
     
     steer = data_files['steer'][i_elem+counter]
        
