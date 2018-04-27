@@ -45,11 +45,35 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
     np_steering = np.zeros(1)
 
     skip_count = 0
+    
+    image = cv2.imread(data_files[camera_angle][i_elem].strip())
+    counter = 0
+    
+    while image is None:
+        counter += 1
+        image = cv2.imread(data_files[camera_angle][i_elem+counter].strip())
+    
+    steer = data_files['steer'][i_elem+counter]
+       
+    if camera_angle is left and steer < -0.8:
+        continue
+    elif camera_angle is right and steer > 0.8:
+        continue
 
-    for i_elem in range(data_size):
+    if camera_angle == "left":
+        steer += 0.2
+    elif camera_angle == "right":
+        steer -= 0.2
+        
+    np_steering[0] = steer
+    np_images[0] = image
+    
+    index = get_index(steer)
+    np_counter_array[index] += 1
+
+    for i_elem in range(counter, data_size):
 
         image = cv2.imread(data_files[camera_angle][i_elem].strip())
-
 
         if image is not None:
 
