@@ -68,3 +68,5 @@ def heat_map(model_name):
         # Overlay is used to alpha blend heatmap onto img.
         plt.imshow(overlay(image, heatmap, alpha=0.7))
         plt.show()
+    
+    return;
