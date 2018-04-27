@@ -19,7 +19,7 @@ for dataset in ["LEFT", "RIGHT", "mond", "mond2", "mond3", "mond4"]:
     for camera_angle in ["center", "right", "left"]:
 
         if dataset == "RIGHT" and camera_angle == "right":
-            break
+            continue
 
         print("Currently loading dataset: ", dataset, ", angle: ", camera_angle, ".")
         new_np_images, new_np_steering, np_counter_array = load_dataset_simulator.load_dataset(camera_angle,dataset, np_counter_array)
