@@ -69,4 +69,4 @@ def make_map():
         plt.imshow(overlay(image, heatmap, alpha=0.7))
         plt.show()
 
-    return;
+    return 0;
