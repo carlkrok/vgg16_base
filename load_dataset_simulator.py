@@ -53,7 +53,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
         counter += 1
         image = cv2.imread(data_files[camera_angle][counter].strip())
     
-    steer = data_files['steer'][i_elem+counter]
+    steer = data_files['steer'][counter]
        
     #if camera_angle == "left" and steer > 0.8:
     #    continue
