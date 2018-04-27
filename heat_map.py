@@ -14,7 +14,7 @@ import cv2
 FRAME_H = 64
 FRAME_W = 64
 
-heat_map(model_name):
+def heat_map(model_name):
     pred_image = np.zeros((1, 64, 64, 3))
 
     #model = load_model('trained_model_simulator.h5')
