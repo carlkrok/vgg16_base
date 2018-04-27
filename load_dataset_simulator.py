@@ -78,9 +78,9 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
         if image is not None:
 
             steer = data_files['steer'][i_elem]
-            if camera_angle is left and steer < -0.8:
+            if camera_angle is left and steer > 0.8:
                 continue
-            elif camera_angle is right and steer > 0.8:
+            elif camera_angle is right and steer < -0.8:
                 continue
 
             if camera_angle == "left":
