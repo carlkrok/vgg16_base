@@ -9,6 +9,10 @@ import matplotlib.pyplot as plt
 range_x=20
 range_y=10
 
+def get_index(angle):
+    return int((angle+1)/0.02)
+
+
 def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright = True, aug_flip = True):
 
 # USE CAMERA ANGE [left, right, center], LAP [LEFT, RIGHT]
@@ -45,22 +49,25 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
     for i_elem in range(data_size):
 
         image = cv2.imread(data_files[camera_angle][i_elem].strip())
-        
+
 
         if image is not None:
 
             steer = data_files['steer'][i_elem]
-            #if abs(steer) < 0.2:
-            #    if np.random.rand() < 0.5:
-            #        skip_count += 1
-            #        continue
+            if camera_angle is left and steer > -0.8:
+                continue
+            elif camera_angle is right and steer < 0.8:
+                continue
 
-            
-            index = int((steer+1.24)/0.025)
-            
-            if np_counter_array[index] < 200:
-           
-                
+            if camera_angle == "left":
+                steer += 0.2
+            elif camera_angle == "right":
+                steer -= 0.2
+
+            get_index(steer)
+
+            if np_counter_array[index] < 300:
+
                 if aug_bright:
                     hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
                     ratio = 1.0 + 0.4 * (np.random.rand() - 0.5)
@@ -72,18 +79,12 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                 image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
                 image = image/255.-.5
 
-                steer = data_files['steer'][i_elem]
-                if camera_angle == "left":
-                    steer += 0.2
-                elif camera_angle == "right":
-                    steer -= 0.2
-                   
 
                 #if aug_flip:
                 #    if np.random.rand() < 0.25:
                 #        image = cv2.flip(image, 1)
                 #        steer = -steer
-                
+
                 image_copy = image
 
                 #if aug_trans:
@@ -93,47 +94,56 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                 #    trans_m = np.float32([[1, 0, trans_x], [0, 1, trans_y]])
                 #    height, width = image.shape[:2]
                 #    image = cv2.warpAffine(image, trans_m, (width, height))
-                
+
                 image = np.array(image)
-                
+
                 temp_img_array = np.zeros((1,64,64,3))
                 temp_img_array[0] = image
-                
-                
+
                 np_images = np.concatenate((np_images, temp_img_array))
                 np_steering = np.append(np_steering, steer)
                 np_counter_array[index] += 1
-                
-                
+
+
 
                 if abs(steer) > 0.25 and np_counter_array[index] < 300:
-                    trans_x = range_x * (np.random.rand() - 0.5)
-                    trans_y = range_y * (np.random.rand() - 0.5)
-                    steer += trans_x * 0.002
-                    trans_m = np.float32([[1, 0, trans_x], [0, 1, trans_y]])
-                    height, width = image.shape[:2]
-                    image_copy = cv2.warpAffine(image_copy, trans_m, (width, height))
-                    image_copy = np.array(image_copy)
-                    
-                    temp_img_array = np.zeros((1,64,64,3))
-                    temp_img_array[0] = image_copy
-                    
                     np_images = np.concatenate((np_images, temp_img_array))
-                    np_steering = np.append(np_steering, steer+0.01)
-                    index = int((steer+1.24)/0.025)
+                    np_steering = np.append(np_steering, steer+0.02)
+                    get_index(steer+0.02)
                     np_counter_array[index] += 1
 
                     np_images = np.concatenate((np_images, temp_img_array))
-                    np_steering = np.append(np_steering, steer-0.01)
-                    index = int((steer+1.24)/0.025)
+                    np_steering = np.append(np_steering, steer-0.02)
+                    get_index(steer-0.02)
                     np_counter_array[index] += 1
 
-                    
+                    #trans_x = range_x * (np.random.rand() - 0.5)
+                    #trans_y = range_y * (np.random.rand() - 0.5)
+                    #steer += trans_x * 0.002
+                    #trans_m = np.float32([[1, 0, trans_x], [0, 1, trans_y]])
+                    #height, width = image.shape[:2]
+                    #image_copy = cv2.warpAffine(image_copy, trans_m, (width, height))
+                    #image_copy = np.array(image_copy)
+
+                    #temp_img_array = np.zeros((1,64,64,3))
+                    #temp_img_array[0] = image_copy
+
+                    #np_images = np.concatenate((np_images, temp_img_array))
+                    #np_steering = np.append(np_steering, steer+0.02)
+                    #get_index(steer+0.02)
+                    #np_counter_array[index] += 1
+
+                    #np_images = np.concatenate((np_images, temp_img_array))
+                    #np_steering = np.append(np_steering, steer-0.02)
+                    #get_index(steer-0.02)
+                    #np_counter_array[index] += 1
+
+
 
                     #index = int((steer+1.12)/0.0244)
 
                     #if abs(steer) > 0.6 and np_counter_array[index] < 300:
-                        
+
                         #np_images = np.concatenate((np_images, temp_img_array))
                         #np_steering = np.append(np_steering, steer)
                         #np_counter_array[index] += 1
