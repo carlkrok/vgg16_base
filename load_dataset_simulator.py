@@ -137,13 +137,13 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                 if abs(steer) > 0.25 and np_counter_array[index] < 300:
                     
                     larger_index = get_index(steer+0.02)
-                    if np_counter_array[larger_index] and (steer+0.02) < 2.0) < 300:
+                    if np_counter_array[larger_index] and ((steer+0.02) < 2.0) < 300:
                         np_images = np.concatenate((np_images, temp_img_array))
                         np_steering = np.append(np_steering, steer+0.02)
                         np_counter_array[larger_index] += 1
                     
                     smaller_index = get_index(steer-0.02)
-                    if np_counter_array[smaller_index] and (steer-0.02 > 0.0) < 300:
+                    if np_counter_array[smaller_index] and ((steer-0.02) > 0.0) < 300:
                         np_images = np.concatenate((np_images, temp_img_array))
                         np_steering = np.append(np_steering, steer-0.02)
                         np_counter_array[smaller_index] += 1
