@@ -66,9 +66,25 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
         steer += 0.2
     elif camera_angle == "right":
         steer -= 0.2
+    
+    if aug_bright:
+        hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+        ratio = 1.0 + 0.4 * (np.random.rand() - 0.5)
+        hsv[:,:,2] =  hsv[:,:,2] * ratio
+        image = cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
+
+    shape = image.shape
+    image = image[int(math.floor(shape[0]/4)):shape[0]-25, 0:shape[1]]
+    image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
+    image = image/255.-.5
+    
+    image = np.array(image)
         
     np_steering[0] = steer
-    np_images[0] = image
+    
+    temp_img_array = np.zeros((1,64,64,3))
+    temp_img_array[0] = image
+    np_images = np.concatenate((np_images, temp_img_array))
     
     index = get_index(steer)
     np_counter_array[index] += 1
