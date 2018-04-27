@@ -55,10 +55,10 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
     
     steer = data_files['steer'][i_elem+counter]
        
-    if camera_angle == "left" and steer < -0.8:
+    if camera_angle == "left" and steer > 0.8:
         continue
         skip_count += 1
-    elif camera_angle == "right" and steer > 0.8:
+    elif camera_angle == "right" and steer < -0.8:
         continue
         skip_count += 1
 
@@ -137,13 +137,13 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                 if abs(steer) > 0.25 and np_counter_array[index] < 300:
                     
                     larger_index = get_index(steer+0.02)
-                    if np_counter_array[larger_index] < 300:
+                    if np_counter_array[larger_index] and (steer+0.02) < 2.0) < 300:
                         np_images = np.concatenate((np_images, temp_img_array))
                         np_steering = np.append(np_steering, steer+0.02)
                         np_counter_array[larger_index] += 1
                     
                     smaller_index = get_index(steer-0.02)
-                    if np_counter_array[smaller_index] < 300:
+                    if np_counter_array[smaller_index] and (steer-0.02 > 0.0) < 300:
                         np_images = np.concatenate((np_images, temp_img_array))
                         np_steering = np.append(np_steering, steer-0.02)
                         np_counter_array[smaller_index] += 1
@@ -188,6 +188,8 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                      #   np_steering = np.append(np_steering, steer-0.01)
                      #   index = int((steer+1.12)/0.0244)
                      #   np_counter_array[index] += 1
+        else:
+            skip_count += 1
 
     print("-----SKIPPED ", skip_count, " ITEMS")
     print("------- Number of images: ", len(np_images), " --- Number of angles: ", len(np_steering))
