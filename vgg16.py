@@ -53,7 +53,7 @@ def vgg16():
     x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv2')(x)
     x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv3')(x)
     x = MaxPooling2D((2, 2), strides=(2, 2), name='block5_pool')(x)
-    x = Dropout(0.5)(x)
+    
 
     base_model = Model(img_input, x, name='vgg16')
 
@@ -70,7 +70,8 @@ def vgg16():
 
     # Regression part
     fc1 = Dense(100, activation='tanh')(top_model)
-    fc2 = Dense(50, activation='tanh')(fc1)
+    drop = Dropout(0.5)(fc1)
+    fc2 = Dense(50, activation='tanh')(drop)
     fc3 = Dense(10, activation='tanh')(fc2)
     prediction = Dense(1, activation='tanh')(fc3)
 
