@@ -110,7 +110,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
 
             index = get_index(steer)
 
-            if np_counter_array[index] < 300:
+            if np_counter_array[index] < 40:
 
                 if aug_bright:
                     hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
@@ -150,18 +150,18 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
 
 
 
-                if abs(steer) > 0.25 and np_counter_array[index] < 300:
+                if abs(steer) > 0.25 and np_counter_array[index] < 40:
                     
                     larger_index = get_index(steer+0.02)
                     if larger_index < 101:
-                        if np_counter_array[larger_index] < 300 and ((steer+0.02) < 2.0):
+                        if np_counter_array[larger_index] <40 and ((steer+0.02) < 2.0):
                             np_images = np.concatenate((np_images, temp_img_array))
                             np_steering = np.append(np_steering, steer+0.02)
                             np_counter_array[larger_index] += 1
 
                     smaller_index = get_index(steer-0.02)
                     if smaller_index >= 0:
-                        if np_counter_array[smaller_index] < 300 and ((steer-0.02) > 0.0):
+                        if np_counter_array[smaller_index] < 40 and ((steer-0.02) > 0.0):
                             np_images = np.concatenate((np_images, temp_img_array))
                             np_steering = np.append(np_steering, steer-0.02)
                             np_counter_array[smaller_index] += 1
