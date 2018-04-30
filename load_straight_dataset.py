@@ -112,7 +112,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
 
             index = get_index(steer)
 
-            if np_counter_array[index] < LIMIT and abs(steer) < 0.02:
+            if np_counter_array[index] < LIMIT:
 
                 shape = image.shape
                 image = image[int(math.floor(shape[0]/4)):shape[0]-25, 0:shape[1]]
