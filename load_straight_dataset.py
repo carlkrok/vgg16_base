@@ -15,7 +15,7 @@ def get_index(angle):
 
 def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright = True, aug_flip = True):
     
-    LIMIT = 1000
+    LIMIT = 2000
 
 # USE CAMERA ANGE [left, right, center], LAP [LEFT, RIGHT]
 
