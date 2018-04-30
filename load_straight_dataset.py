@@ -111,7 +111,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                 steer -= 0.2
 
             index = get_index(steer)
-
+            
             if np_counter_array[index] < LIMIT and abs(steer) < 0.01:
 
                 shape = image.shape
@@ -128,7 +128,7 @@ def load_dataset(camera_angle,lap, np_counter_array, aug_trans = True,aug_bright
                 np_steering = np.append(np_steering, 0.0)
                 np_counter_array[index] += 1
                 
-             elif np_counter_array8[index] < LIMIT: 
+            elif np_counter_array8[index] < LIMIT: 
                 shape = image.shape
                 image = image[int(math.floor(shape[0]/4)):shape[0]-25, 0:shape[1]]
                 image = cv2.resize(image,(64,64), interpolation=cv2.INTER_AREA)
