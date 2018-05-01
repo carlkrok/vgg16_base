@@ -23,8 +23,8 @@ app = Flask(__name__)
 model = None
 prev_image_array = None
 
-MAX_SPEED = 21
-MIN_SPEED = 21
+MAX_SPEED = 15
+MIN_SPEED = 15
 
 speed_limit = MAX_SPEED
 
@@ -38,7 +38,11 @@ def telemetry(sid, data):
         # The current speed of the car
         speed = float(data["speed"])
         # The current image from the center camera of the car
+        #image = cv2.imread(data["image"].strip())
+        #print("IMAGE: ------------------------------------S")
+        #print(data["image"])
         image = Image.open(BytesIO(base64.b64decode(data["image"])))
+
         # save frame
         if args.image_folder != '':
             timestamp = datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%S_%f')[:-3]
@@ -47,6 +51,7 @@ def telemetry(sid, data):
 
         try:
             image = np.asarray(image)       # from PIL image to numpy array
+            image = np.roll(image, 1, axis=-1)
 
             shape = image.shape
             image = image[math.floor(shape[0]/4):shape[0]-25, 0:shape[1]]
