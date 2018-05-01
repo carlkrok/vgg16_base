@@ -16,9 +16,13 @@ FRAME_W = 64
 
 pred_image = np.zeros((1, 64, 64, 3))
 
+#data_files = pd.read_csv(csv_path, index_col = False)
+#data_files.columns = ['center','left','right','steer','throttle','break', 'speed']
+image = cv2.imread('Datasets/IMG_LEFT/center_2018_04_22_16_24_41_584.jpg')
+
 #model = load_model('trained_model_simulator.h5')
-model = load_model('model_trained_on_uniform_data_1.h5')
-image = utils.load_img('Datasets/IMG_LEFT/center_2018_04_22_16_24_41_584.jpg') # Should be 0.3705882
+model = load_model('model_fc_dropout_560.h5')
+#image = utils.load_img('Datasets/IMG_LEFT/center_2018_04_22_16_24_41_584.jpg') # Should be 0.3705882
 #image = utils.load_img('Datasets/IMG_LEFT/center_2018_04_22_16_23_27_935.jpg')  # Should be -0.2117647
 #image = utils.load_img('Datasets/IMG_LEFT/center_2018_04_22_16_23_34_066.jpg') # Should be -0.06470589
 

@@ -23,8 +23,8 @@ app = Flask(__name__)
 model = None
 prev_image_array = None
 
-MAX_SPEED = 13
-MIN_SPEED = 12
+MAX_SPEED = 25
+MIN_SPEED = 25
 
 speed_limit = MAX_SPEED
 
@@ -65,7 +65,7 @@ def telemetry(sid, data):
                 speed_limit = MIN_SPEED  # slow down
             else:
                 speed_limit = MAX_SPEED
-            throttle = 0.7 #- (speed/speed_limit)**2 - steering_angle**2
+            throttle = 1 - (speed/speed_limit)**2 - steering_angle**2
 
             print('{} {} {}'.format(steering_angle, throttle, speed))
             send_control(steering_angle, throttle)
