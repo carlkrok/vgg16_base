@@ -115,6 +115,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     model = load_model(args.model)
+	
 
     if args.image_folder != '':
         print("Creating image folder at {}".format(args.image_folder))
